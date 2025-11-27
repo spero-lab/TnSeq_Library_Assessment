@@ -13,7 +13,3 @@ Config_Template=../config/config_template.yml
     mkdir ../results/fastqc
     # Run FastQC on the concatenated fastq file 
     fastqc ../data/"$Sample_Name".fastq.gz -o ../results/fastqc
-
-
-
-    # After cleaning the data, you are going to have name that .fastq.gz sample1_cleaned.fastq.gz or something, just make sure it is different from sample1.fastq.gz, so that users can tell the difference between pre- vs. post-cleaning fastqc output

@@ -49,7 +49,7 @@ chmod 755 ./*
     # SAM --> BAM 
         ./samtobam.sh
     
-
+    # Pipeline is still under development. 
 
 
         # Deactivate conda env (w/ yq)
