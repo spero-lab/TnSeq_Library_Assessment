@@ -1,0 +1,24 @@
+---
+sample_name: 'Sample_ID' #setup2_organize - if your fastq file is already concatenated, paste all text preceding '.fastq.gz' into sample_name
+reference_genome_organism: 'Organism_Name' #Name of the strain or organism you are studying, this will appear as the prefix for indexed reference genome files. 
+input_files:
+  all:
+    input_fastq: '/path/to/fastq_files' #setup2_organize - PER SAMPLE, not ALL SAMPLE SUBFOLDERS simutaneously! 
+    input_ref: '/path/to/ref_genome_files' #setup2_organize - Folder holding ref. genome .fna & .gff files. 
+adjustable_parameters:
+  input_data:
+    fastq_cat: no #setup2_organize
+  QC: # filter_reads.py
+    transposon_border_sequence: 'TATAAGAGTCAG' #string, ~12 bps long, aka. TBS
+    hamming_distance_threshold_tbs: 2 # Number of mismatched bases permitted in TBS for read to still be consdiered 'matched'. Recommended value = 2-3. 
+    phredscore_threshold: 20 # Minimum phred score required for a read to be kept for downstream analyses. Recommended value = 20-30. 
+    hamming_distance_threshold_qs: 3 # Number of low-quality bases permitted in sequence for read to still be kept for downstream analyses. Recommended value = 3. 
+  MAPQ_Filter: # samtobam.sh 
+    MAPQ_filter: yes # if you would like to filter reads with lower mapping quality scores, write 'yes'
+    MAPQ_threshold: 20 # 20 is recommended 
+  CPUs:
+    - default: 4
+    - bowtie2: 8 
+    - fastqc: 2
+  RAM:
+  Time:
